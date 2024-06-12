@@ -27,5 +27,33 @@ jobs:
     - name: Build step
       run: npm run build
       env:
-        VITE_APP_PUBLIC_URL: /example-react-cicd  # --> /example-react-cicd/ 
+        VITE_APP_PUBLIC_URL: /example-react-cicd  # --> /example-react-cicd/
+      name: uploading build files
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+      jobs:
+      job1:
+    
+      job2:
+      needs: job1
+      jobs:
+  deploy:
+    permissions:
+      contents: write
+      steps:
+- name: Uploading build files
+  uses: actions/upload-artifact@v2
+  with:
+    name: artifact
+    path: <artifact_path>
+    steps:
+- name: Downloading artifact
+  uses: actions/download-artifact@v2
+  with:
+    name: artifact
+    path: <artifact_path>
+
+
+
+
+
     # TODO: Complete the steps in CICD.md
