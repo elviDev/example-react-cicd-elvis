@@ -16,12 +16,15 @@ afterEach(cleanup);
  You need to render the component: https://testing-library.com/docs/react-testing-library/api/#render
  You'll need to virtually click on the checkbox: https://testing-library.com/docs/dom-testing-library/api-events/#fireevent
 */
-test('REPLACE_ME', () => {
+test('CheckboxWithLabel', () => {
   // 1. Arrange: render checkbox and store the component as a var, so you can refer to it later.
-
+  const { getByLabelText } = render(<CheckboxWithLabel labelOn="On" labelOff="Off" />);
   // 2. Assert: check that checkbox is initially off. You can do something like 'checkbox.checked' to check its value
-
+  const checkbox = getByLabelText(/off/i);
+  expect(checkbox.checked).toBe(false);
   // 3. Act: click on the checkbox using FireEvent
-
+  fireEvent.click(checkbox);
   // 4. Assert: check that the checkbox is now clicked and that the label has changed to "on"!
+  expect(checkbox.checked).toBe(true);
+  expect(getByLabelText(/on/i)).toBeTruthy();
 });

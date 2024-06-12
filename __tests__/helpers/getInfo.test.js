@@ -11,10 +11,14 @@ in the TODO).
 4. Run the test and see if it passes. If not, try and figure out why.
 You might have forgotten a step. See the sum.test.js and figure out the missing piece.
 */
-
+import {getInfo} from '../../src/helpers/getInfo';
 test('REPLACE_ME', () => {
-    expect("REPLACE_ME").toBe("REPLACE_ME");
+    expect(getInfo(null)).toBe("none");
 });
+
+
+
+
 
 
 //TODO: write a test that checks that the names are joining correctly
@@ -29,9 +33,9 @@ test('REPLACE_ME', () => {
   5. Run the tests. If it fails, try and figure out why.
   6. For extra work, try and write another test for both cases, if there is a 'name' in the object, and one without.
 */
-
-test('REPLACE_ME', () => {
-    expect("REPLACE_ME").toBe("REPLACE_ME");
+const country = {name: "spain"};
+test('country name should be spain', () =>  {
+    expect(getInfo(country)).toBe("spain");
 });
 
 /*

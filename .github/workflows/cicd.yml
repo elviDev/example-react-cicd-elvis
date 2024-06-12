@@ -12,7 +12,7 @@ on:
 jobs:
   test-build:
     name: Test & Build
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
@@ -21,6 +21,11 @@ jobs:
       with:
         node-version: 16.x
     - name: Install dependencies
-      run: npm ci 
-
+      run: npm ci
+    - name: run test
+      run: npm run test
+    - name: Build step
+      run: npm run build
+      env:
+      VITE_APP_PUBLIC_URL: https://github.com/elviDev/example-react-cicd-elvis/blob/main/CICD.md  # --> /example-react-cicd/ 
     # TODO: Complete the steps in CICD.md
